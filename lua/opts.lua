@@ -5,7 +5,7 @@ local cmd = vim.api.nvim_command
 
 --opt.colorcolumn = '80'
 opt.number = true
---opt.relativenumber = true
+opt.relativenumber = true
 --opt.scrolloff = 4
 --opt.signcolumn = "yes"
 
