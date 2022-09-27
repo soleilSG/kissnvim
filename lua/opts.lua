@@ -30,3 +30,7 @@ opt.tabstop = 2
 
 opt.splitright = true
 opt.splitbelow = true
+
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+

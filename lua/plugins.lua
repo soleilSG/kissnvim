@@ -3,8 +3,8 @@
 local fn = vim.fn
 
 -- If packer hasn't been installed, 
--- install packer as an optional plugin for package management.
-local install_path = fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+-- install packer for package management.
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
    PACKER_BOOTSTRAP = fn.system {
     "git",
@@ -14,10 +14,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
+	vim.cmd [[packadd packer.nvim]]
 end
-
--- Load packer package, since it's been installed as optional plugin.
-vim.cmd [[packadd packer.nvim]]
 
 -- Load packer Lua module
 local packer = require 'packer'
@@ -27,8 +25,31 @@ local packer_util = require 'packer.util'
 local use = packer.use
 packer.startup({
 	function()
-		-- Packer manages itself as an optional plugin
-		use {'wbthomason/packer.nvim', opt = true}
+		-- Packer manages itself
+		use 'wbthomason/packer.nvim'
+
+		-- LSP
+		use 'neovim/nvim-lspconfig'
+
+		-- Treesitter
+		use {
+			'nvim-treesitter/nvim-treesitter',
+			run = function()
+				require('nvim-treesitter.install').update({with_sync = true})
+			end,
+			config = function()
+				local configs = require('nvim-treesitter.configs')
+				configs.setup {
+					highlight = {
+						enable = true,
+						additional_vim_regex_highlighting = false
+					},
+					indent = {
+						enable = true
+					}
+				}
+			end
+		}
 
 		if PACKER_BOOTSTRAP then
 			packer.sync()
