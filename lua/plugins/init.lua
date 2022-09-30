@@ -28,9 +28,17 @@ packer.startup({
 		-- Packer manages itself
 		use 'wbthomason/packer.nvim'
 
-		-- Mason
+		-- Mason, lazy loaded
 		use {
 			"williamboman/mason.nvim",
+			cmd = {
+				"Mason",
+				"MasonInstall",
+				"MasonInstallAll",
+				"MasonUninstall",
+				"MasonUninstallAll",
+				"MasonLog",
+			},
 			config = function()
 				local mason = require("mason")
 				mason.setup()
