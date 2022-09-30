@@ -5,7 +5,7 @@ local cmd = vim.api.nvim_command
 
 --opt.colorcolumn = '80'
 opt.number = true
-opt.relativenumber = true
+--opt.relativenumber = true
 --opt.scrolloff = 4
 --opt.signcolumn = "yes"
 
@@ -33,4 +33,3 @@ opt.splitbelow = true
 
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
-

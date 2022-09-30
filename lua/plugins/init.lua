@@ -28,8 +28,22 @@ packer.startup({
 		-- Packer manages itself
 		use 'wbthomason/packer.nvim'
 
+		-- Mason
+		use {
+			"williamboman/mason.nvim",
+			config = function()
+				local mason = require("mason")
+				mason.setup()
+			end
+		}
+
 		-- LSP
-		use 'neovim/nvim-lspconfig'
+		use {
+			"neovim/nvim-lspconfig",
+			config = function()
+				require("plugins.configs.lspconfig")
+			end
+		}
 
 		-- Treesitter
 		use {
