@@ -30,6 +30,11 @@ opt.tabstop = 2
 
 opt.splitright = true
 opt.splitbelow = true
+opt.laststatus = 3
 
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
+-- disable netrw, using nvim-tree exclusively
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1

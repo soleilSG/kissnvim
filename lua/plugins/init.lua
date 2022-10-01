@@ -73,6 +73,25 @@ packer.startup({
 			end
 		}
 
+		-- Nvim-tree file explorer
+		-- lazy loaded
+		use {
+			'kyazdani42/nvim-tree.lua',
+			cmd = {
+				"NvimTreeOpen",
+				"NvimTreeToggle",
+				"NvimTreeFindFile",
+				"NvimTreeFindFileToggle"
+			},
+			requires = {
+				'kyazdani42/nvim-web-devicons',
+			},
+			tag = 'nightly',
+			config = function()
+				require("nvim-tree").setup()
+			end
+		}
+
 		if PACKER_BOOTSTRAP then
 			packer.sync()
 		end
