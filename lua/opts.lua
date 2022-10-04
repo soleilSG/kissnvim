@@ -8,6 +8,7 @@ opt.number = true
 --opt.relativenumber = true
 --opt.scrolloff = 4
 --opt.signcolumn = "yes"
+opt.showmode = true
 
 opt.encoding = 'utf8'
 opt.fileencoding = 'utf8'
@@ -22,16 +23,17 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.incsearch = true
 opt.hlsearch = true
-opt.showmode = false
 
 opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.tabstop = 2
+opt.expandtab = true
 
 opt.splitright = true
 opt.splitbelow = true
 opt.laststatus = 3
 
+-- Treesitter folding
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
