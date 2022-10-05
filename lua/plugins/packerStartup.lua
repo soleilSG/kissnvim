@@ -105,6 +105,16 @@ packer.startup({
         require("nvim-tree").setup()
       end
     }
+
+    -- Telescope
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {'nvim-lua/plenary.nvim'},
+      config = function ()
+        require 'plugins.configs.telescope'
+      end
+    }
+
   end,
   config = {
     compile_path = fn.stdpath "data" .. "/site/plugin/packer_compiled.lua",
