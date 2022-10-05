@@ -7,8 +7,9 @@ local cmd = vim.api.nvim_command
 opt.number = true
 --opt.relativenumber = true
 --opt.scrolloff = 4
---opt.signcolumn = "yes"
+opt.signcolumn = "yes"
 opt.showmode = true
+opt.showmatch = true
 
 opt.encoding = 'utf8'
 opt.fileencoding = 'utf8'
