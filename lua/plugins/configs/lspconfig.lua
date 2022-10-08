@@ -12,7 +12,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -76,3 +76,13 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
+
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+lspconfig.pyright.setup{}
