@@ -44,7 +44,10 @@ packer.startup({
     }
 
     -- Snippet
-    use 'L3MON4D3/LuaSnip'
+    use {
+      'L3MON4D3/LuaSnip',
+      run = "make install_jsregexp",
+    }
 
     -- nvim-cmp sources
     use 'hrsh7th/cmp-nvim-lsp'
@@ -107,10 +110,15 @@ packer.startup({
     }
 
     -- Telescope
+    -- lazy loaded
+    use 'nvim-lua/plenary.nvim'
     use {
       'nvim-telescope/telescope.nvim',
-      requires = {'nvim-lua/plenary.nvim'},
-      config = function ()
+      opt = true,
+      cmd = {
+        "Telescope",
+      },
+      config = function()
         require 'plugins.configs.telescope'
       end
     }
