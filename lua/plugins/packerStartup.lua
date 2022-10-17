@@ -44,9 +44,13 @@ packer.startup({
     }
 
     -- Snippet
+    use 'rafamadriz/friendly-snippets'
     use {
       'L3MON4D3/LuaSnip',
       run = "make install_jsregexp",
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end
     }
 
     -- nvim-cmp sources

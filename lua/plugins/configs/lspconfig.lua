@@ -36,7 +36,7 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
@@ -47,6 +47,7 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
 end
 
+-- Lua
 lspconfig.sumneko_lua.setup{
 	settings = {
     Lua = {
@@ -72,11 +73,16 @@ lspconfig.sumneko_lua.setup{
   capabilities = capabilities
 }
 
+-- Python
+lspconfig.pyright.setup{}
+
+-- Go
 lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
 
+-- Deno, JavaScript/TypeScript
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
@@ -85,4 +91,12 @@ lspconfig.denols.setup {
   capabilities = capabilities
 }
 
-lspconfig.pyright.setup{}
+-- CSS
+lspconfig.cssls.setup{
+  capabilities = capabilities
+}
+
+-- Html
+lspconfig.html.setup{
+  capabilities = capabilities
+}

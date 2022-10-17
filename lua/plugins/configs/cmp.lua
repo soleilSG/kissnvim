@@ -1,3 +1,5 @@
+vim.opt.completeopt = "menu,menuone,noinsert"
+
 local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 
@@ -20,13 +22,12 @@ cmp.setup {
       })
     }),
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+  mapping = {
+    ['<C-.>'] = cmp.mapping.complete(),
+    ['<C-f>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -46,7 +47,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-  }),
+  },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
