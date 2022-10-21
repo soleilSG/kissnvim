@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -32,6 +32,17 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  -- format on save
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end
+    })
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -43,13 +54,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- !important nerdfonts needs to be setup for this to work in your terminal
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- Lua
-lspconfig.sumneko_lua.setup{
-	settings = {
+lspconfig.sumneko_lua.setup {
+  settings = {
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -57,7 +68,7 @@ lspconfig.sumneko_lua.setup{
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -68,13 +79,13 @@ lspconfig.sumneko_lua.setup{
         enable = false,
       }
     }
-	},
+  },
   on_attach = on_attach,
   capabilities = capabilities
 }
 
 -- Python
-lspconfig.pyright.setup{}
+lspconfig.pyright.setup {}
 
 -- Go
 lspconfig.gopls.setup {
@@ -92,11 +103,11 @@ lspconfig.denols.setup {
 }
 
 -- CSS
-lspconfig.cssls.setup{
+lspconfig.cssls.setup {
   capabilities = capabilities
 }
 
 -- Html
-lspconfig.html.setup{
+lspconfig.html.setup {
   capabilities = capabilities
 }

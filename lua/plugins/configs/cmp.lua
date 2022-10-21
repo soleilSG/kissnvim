@@ -25,10 +25,19 @@ cmp.setup {
   mapping = {
     ['<C-.>'] = cmp.mapping.complete(),
     ['<C-f>'] = cmp.mapping.close(),
+    --[[
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
+    ]]
+    ['<CR>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.confirm()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()

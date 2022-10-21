@@ -22,6 +22,7 @@ packer.startup({
     -- Icons
     use 'kyazdani42/nvim-web-devicons'
 
+
     -- lspkind
     use 'onsails/lspkind.nvim'
 
@@ -126,6 +127,9 @@ packer.startup({
         require 'plugins.configs.telescope'
       end
     }
+
+    -- autoclose
+    use 'm4xshen/autoclose.nvim'
 
   end,
   config = {
