@@ -77,6 +77,25 @@ packer.startup({
       end
     }
 
+    --nvim-jdtls java language server
+    use 'mfussenegger/nvim-jdtls'
+
+    -- null-ls
+    --[[
+    use {
+      'jose-elias-alvarez/null-ls.nvim',
+      config = function()
+        require("plugins.configs.null-ls")
+      end
+    }
+    use {
+      'MunifTanjim/prettier.nvim',
+      config = function()
+        require("plugins.configs.prettier")
+      end
+    }
+    ]]
+
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
@@ -129,7 +148,7 @@ packer.startup({
     }
 
     -- autoclose
-    use 'm4xshen/autoclose.nvim'
+    --use 'm4xshen/autoclose.nvim'
 
   end,
   config = {
