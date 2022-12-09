@@ -96,6 +96,7 @@ lspconfig.gopls.setup {
 }
 
 -- Deno, JavaScript/TypeScript
+--[[
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
@@ -103,6 +104,10 @@ lspconfig.denols.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
+]]
+
+-- tsserver
+lspconfig.tsserver.setup {}
 
 -- CSS
 lspconfig.cssls.setup {
@@ -111,5 +116,10 @@ lspconfig.cssls.setup {
 
 -- Html
 lspconfig.html.setup {
+  capabilities = capabilities
+}
+
+-- Json
+lspconfig.jsonls.setup {
   capabilities = capabilities
 }

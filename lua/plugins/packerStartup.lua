@@ -96,6 +96,10 @@ packer.startup({
     }
     ]]
 
+    -- autotag
+    use 'windwp/nvim-ts-autotag'
+
+
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
@@ -111,6 +115,9 @@ packer.startup({
           },
           indent = {
             enable = true
+          },
+          autotag = {
+            enable = true,
           }
         }
       end
