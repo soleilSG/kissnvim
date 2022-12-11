@@ -11,6 +11,3 @@ map('n', '<leader>nt', ':NvimTreeToggle<cr>', opts)
 
 -- Prettier formating buffer
 map('n', '<leader>pf', ':%!prettier --stdin-filepath %<CR>', opts)
-
--- auto pair {}
-map('i', '<leader>}', '<CR>}<ESC><S-o>', opts)

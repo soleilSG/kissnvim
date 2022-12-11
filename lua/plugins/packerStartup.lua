@@ -22,7 +22,6 @@ packer.startup({
     -- Icons
     use 'kyazdani42/nvim-web-devicons'
 
-
     -- lspkind
     use 'onsails/lspkind.nvim'
 
@@ -80,25 +79,11 @@ packer.startup({
     --nvim-jdtls java language server
     use 'mfussenegger/nvim-jdtls'
 
-    -- null-ls
-    --[[
-    use {
-      'jose-elias-alvarez/null-ls.nvim',
-      config = function()
-        require("plugins.configs.null-ls")
-      end
-    }
-    use {
-      'MunifTanjim/prettier.nvim',
-      config = function()
-        require("plugins.configs.prettier")
-      end
-    }
-    ]]
-
     -- autotag
     use 'windwp/nvim-ts-autotag'
 
+    -- autoclose
+    use 'm4xshen/autoclose.nvim'
 
     -- Treesitter
     use {
@@ -107,19 +92,7 @@ packer.startup({
         require('nvim-treesitter.install').update({ with_sync = true })
       end,
       config = function()
-        local configs = require('nvim-treesitter.configs')
-        configs.setup {
-          highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false
-          },
-          indent = {
-            enable = true
-          },
-          autotag = {
-            enable = true,
-          }
-        }
+        require 'plugins.configs.treesitter'
       end
     }
 
@@ -153,9 +126,6 @@ packer.startup({
         require 'plugins.configs.telescope'
       end
     }
-
-    -- autoclose
-    --use 'm4xshen/autoclose.nvim'
 
   end,
   config = {
