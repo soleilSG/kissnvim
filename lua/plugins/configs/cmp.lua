@@ -25,11 +25,12 @@ cmp.setup {
   mapping = {
     ['<C-.>'] = cmp.mapping.complete(),
     ['<C-f>'] = cmp.mapping.close(),
+    --[[
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = false,
     },
-    --[[
+    ]]
     ['<CR>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.confirm()
@@ -37,7 +38,6 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ]]
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()

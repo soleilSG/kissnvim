@@ -83,7 +83,12 @@ packer.startup({
     use 'windwp/nvim-ts-autotag'
 
     -- autoclose
-    use 'm4xshen/autoclose.nvim'
+    use {
+      'm4xshen/autoclose.nvim',
+      config = function ()
+        require("autoclose").setup {}
+      end
+    }
 
     -- Treesitter
     use {
