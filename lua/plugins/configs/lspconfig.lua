@@ -61,7 +61,7 @@ for type, icon in pairs(signs) do
 end
 
 -- Lua
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
