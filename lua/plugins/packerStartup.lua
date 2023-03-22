@@ -2,6 +2,7 @@
 
 local fn = vim.fn
 
+-- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 -- Load packer Lua module
@@ -9,62 +10,52 @@ local packer = require 'packer'
 local packer_util = require 'packer.util'
 
 -- Setup packer
-local use = packer.use
+local use = packer.use -- packer.use is a function to declare plugin's specifications
 packer.startup({
   function()
     -- Packer manages itself, lazy loaded
     -- Command 'PackerStartup' will load and startup packer
-    use {
-      'wbthomason/packer.nvim',
-      opt = true
-    }
+    use { 'wbthomason/packer.nvim', opt = true }
 
     -- Icons
     use 'kyazdani42/nvim-web-devicons'
 
-    -- lspkind
-    use 'onsails/lspkind.nvim'
+    -- ColorSchemes
+    use { 'folke/tokyonight.nvim', "lunarvim/darkplus.nvim" }
 
     -- Mason, lazy loaded
     use {
       "williamboman/mason.nvim",
       opt = true,
-      cmd = {
-        "Mason",
-        "MasonInstall",
-        "MasonInstallAll",
-        "MasonUninstall",
-        "MasonUninstallAll",
-        "MasonLog",
-      },
+      cmd = { "Mason" },
       config = function()
-        local mason = require("mason")
-        mason.setup()
+        require("mason").setup()
       end
     }
 
     -- Snippet
-    use 'rafamadriz/friendly-snippets'
     use {
       'L3MON4D3/LuaSnip',
       run = "make install_jsregexp",
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
-      end
+      end,
+      requires = { 'rafamadriz/friendly-snippets' }
     }
-
-    -- nvim-cmp sources
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
 
     -- nvim-cmp, Autocompletion plugin
     use {
       'hrsh7th/nvim-cmp',
       config = function()
         require("plugins.configs.cmp")
-      end
+      end,
+      requires = {
+        'hrsh7th/cmp-nvim-lsp',
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'onsails/lspkind.nvim'
+      }
     }
 
     -- LSP
@@ -80,12 +71,12 @@ packer.startup({
     use 'mfussenegger/nvim-jdtls'
 
     -- autotag
-    use 'windwp/nvim-ts-autotag'
+    use { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
 
     -- autoclose
     use {
       'm4xshen/autoclose.nvim',
-      config = function ()
+      config = function()
         require("autoclose").setup {}
       end
     }
@@ -106,12 +97,7 @@ packer.startup({
     use {
       'kyazdani42/nvim-tree.lua',
       opt = true,
-      cmd = {
-        "NvimTreeOpen",
-        "NvimTreeToggle",
-        "NvimTreeFindFile",
-        "NvimTreeFindFileToggle"
-      },
+      cmd = { "NvimTreeToggle" },
       tag = 'nightly',
       config = function()
         require("nvim-tree").setup()
@@ -124,14 +110,41 @@ packer.startup({
     use {
       'nvim-telescope/telescope.nvim',
       opt = true,
-      cmd = {
-        "Telescope",
-      },
+      cmd = { "Telescope" },
       config = function()
         require 'plugins.configs.telescope'
       end
     }
 
+    -- BufferLine
+    -- Lazy loaded
+    use {
+      'akinsho/bufferline.nvim',
+      tag = "v3.*",
+      opt = true,
+      cmd = { 'BufferLinePick' },
+      config = function()
+        require("bufferline").setup({
+          options = {
+            mode = 'buffers',
+            offsets = {
+              { filetype = 'NvimTree' }
+            },
+          }
+        })
+      end
+    }
+
+    -- Gitsigns
+    -- Lazy loarded
+    use {
+      'lewis6991/gitsigns.nvim',
+      opt = true,
+      cmd = { 'Gitsigns' },
+      config = function()
+        require('gitsigns').setup()
+      end
+    }
   end,
   config = {
     compile_path = fn.stdpath "data" .. "/site/plugin/packer_compiled.lua",

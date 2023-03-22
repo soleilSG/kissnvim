@@ -4,29 +4,54 @@ if not present then
   return
 end
 
+-- ****** Dianostic config ******
+-- This is for diagnositcs signs on the line number column
+-- use this to beautify the plain E W signs to more fun ones
+-- !important nerdfonts needs to be setup for this to work in your terminal
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+--[[
+vim.diagnostic.config({
+  virtual_text = false,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = 'always',
+  },
+})
+--]]
+
+-- Diagnostic mapping
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
+-- ****** LSP config ******
+local on_attach = function(_, bufnr)
+  -- Enable manualy completion triggered by <c-x><c-o>
   --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  --[[
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
+  --]]
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
@@ -51,14 +76,8 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- this is for diagnositcs signs on the line number column
--- use this to beautify the plain E W signs to more fun ones
--- !important nerdfonts needs to be setup for this to work in your terminal
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+
+-- ****** Languages setup ******
 
 -- Lua
 lspconfig.lua_ls.setup {
@@ -95,8 +114,9 @@ lspconfig.gopls.setup {
   capabilities = capabilities
 }
 
--- Deno, JavaScript/TypeScript
+-- JavaScript
 --[[
+-- Deno
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
@@ -105,21 +125,34 @@ lspconfig.denols.setup {
   capabilities = capabilities
 }
 ]]
-
 -- tsserver
-lspconfig.tsserver.setup {}
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 
 -- CSS
+--[[
+-- cssls
 lspconfig.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+--]]
+-- tailwindcss
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
   capabilities = capabilities
 }
 
 -- Html
 lspconfig.html.setup {
+  on_attach = on_attach,
   capabilities = capabilities
 }
 
 -- Json
 lspconfig.jsonls.setup {
+  on_attach = on_attach,
   capabilities = capabilities
 }

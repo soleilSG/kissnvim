@@ -4,5 +4,5 @@ vim.api.nvim_create_user_command(
   function()
     require 'plugins.packerStartup'
   end,
-  {desc = "Load and startup packer"}
+  { desc = "Load and startup packer" }
 )

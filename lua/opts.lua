@@ -3,10 +3,8 @@
 local opt = vim.opt
 local cmd = vim.api.nvim_command
 
---opt.colorcolumn = '80'
 opt.number = true
 --opt.relativenumber = true
---opt.scrolloff = 4
 opt.signcolumn = "yes"
 opt.showmode = true
 opt.showmatch = true
@@ -17,7 +15,6 @@ opt.fileencoding = 'utf8'
 opt.syntax = 'on'
 opt.termguicolors = true
 cmd('colorscheme torte')
---vim.g.dracula_transparent_bg = false
 opt.cursorline = true
 
 opt.ignorecase = true

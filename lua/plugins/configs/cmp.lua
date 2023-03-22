@@ -23,14 +23,6 @@ cmp.setup {
     }),
   },
   mapping = {
-    ['<C-.>'] = cmp.mapping.complete(),
-    ['<C-f>'] = cmp.mapping.close(),
-    --[[
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = false,
-    },
-    ]]
     ['<CR>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.confirm()

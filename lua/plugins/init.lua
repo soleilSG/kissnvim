@@ -1,12 +1,12 @@
--- Install packer
+-- Bootstrapping packer
 
 local fn = vim.fn
 
--- If packer hasn't been installed, 
+-- If packer hasn't been installed,
 -- install packer for package management.
 local install_path = fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-   fn.system {
+  fn.system {
     "git",
     "clone",
     "--depth",

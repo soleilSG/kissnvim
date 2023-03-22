@@ -42,5 +42,5 @@ luac.out
 *.x86_64
 *.hex
 
-
-plugin/packer_compiled.lua
+# lua workspace setting
+.luarc.json
