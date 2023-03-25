@@ -23,7 +23,6 @@ vim.diagnostic.config({
     source = 'always',
   },
 })
---]]
 
 -- Diagnostic mapping
 local opts = { noremap = true, silent = true }
@@ -31,7 +30,7 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
+--]]
 -- ****** LSP config ******
 local on_attach = function(_, bufnr)
   -- Enable manualy completion triggered by <c-x><c-o>
@@ -46,8 +45,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
-  --]]
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -56,6 +53,8 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  --]]
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
   -- format on save
@@ -75,6 +74,23 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- ****** LSPsaga config ******
+-- local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+keymap({ "n", "v" }, "<Leader>ca", "<cmd>Lspsaga code_action<CR>")
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
+keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>")
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
 
 -- ****** Languages setup ******
@@ -115,7 +131,6 @@ lspconfig.gopls.setup {
 }
 
 -- JavaScript
---[[
 -- Deno
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
@@ -124,21 +139,19 @@ lspconfig.denols.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
-]]
 -- tsserver
+--[[
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
-
+]]
 -- CSS
---[[
 -- cssls
 lspconfig.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
---]]
 -- tailwindcss
 lspconfig.tailwindcss.setup {
   on_attach = on_attach,

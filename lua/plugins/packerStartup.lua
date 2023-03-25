@@ -92,8 +92,7 @@ packer.startup({
       end
     }
 
-    -- Nvim-tree file explorer
-    -- lazy loaded
+    -- Nvim-tree file explorer, lazy loaded
     use {
       'kyazdani42/nvim-tree.lua',
       opt = true,
@@ -104,8 +103,7 @@ packer.startup({
       end
     }
 
-    -- Telescope
-    -- lazy loaded
+    -- Telescope, lazy loaded
     use 'nvim-lua/plenary.nvim'
     use {
       'nvim-telescope/telescope.nvim',
@@ -116,8 +114,7 @@ packer.startup({
       end
     }
 
-    -- BufferLine
-    -- Lazy loaded
+    -- BufferLine, lazy loaded
     use {
       'akinsho/bufferline.nvim',
       tag = "v3.*",
@@ -135,14 +132,53 @@ packer.startup({
       end
     }
 
-    -- Gitsigns
-    -- Lazy loarded
+    -- Gitsigns, lazy loarded
     use {
       'lewis6991/gitsigns.nvim',
       opt = true,
       cmd = { 'Gitsigns' },
       config = function()
         require('gitsigns').setup()
+      end
+    }
+
+    -- git plugin, lazy loaded
+    use {
+      'dinhhuy258/git.nvim',
+      opt = true,
+      cmd = { 'Git' },
+      config = function()
+        require('git').setup()
+      end
+    }
+
+    -- lspsaga, lazy loaded
+    use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+      -- opt = true,
+      -- cmd = { 'Lspsaga lsp_finder' },
+      config = function()
+        require("lspsaga").setup({})
+      end
+    })
+
+    -- Peek, markdown previewer, lazy loaded
+    use({
+      'toppair/peek.nvim',
+      run = 'deno task --quiet build:fast',
+      opt = true,
+      cmd = { 'PeekOpen' },
+      config = function()
+        require 'plugins.configs.peek'
+      end
+    })
+
+    -- comment
+    use {
+      'terrortylor/nvim-comment',
+      config = function()
+        require('nvim_comment').setup()
       end
     }
   end,
