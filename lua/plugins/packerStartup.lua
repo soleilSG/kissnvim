@@ -20,8 +20,11 @@ packer.startup({
     -- Icons
     use 'kyazdani42/nvim-web-devicons'
 
-    -- ColorSchemes
-    use { 'folke/tokyonight.nvim', "lunarvim/darkplus.nvim" }
+    -- ColorSchemes, lazy loaded. Use ":PackerLoad" command to load
+    use {
+      { 'folke/tokyonight.nvim',  opt = true },
+      { "lunarvim/darkplus.nvim", opt = true }
+    }
 
     -- Mason, lazy loaded
     use {

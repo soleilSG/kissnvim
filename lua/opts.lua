@@ -1,7 +1,6 @@
 --[[ opts.lua ]]
 
 local opt = vim.opt
-local cmd = vim.api.nvim_command
 
 opt.number = true
 --opt.relativenumber = true
@@ -14,7 +13,6 @@ opt.fileencoding = 'utf8'
 
 opt.syntax = 'on'
 opt.termguicolors = true
-cmd('colorscheme torte')
 opt.cursorline = true
 
 opt.ignorecase = true
