@@ -184,6 +184,12 @@ packer.startup({
         require('nvim_comment').setup()
       end
     }
+
+    -- ai
+    use {
+      'aduros/ai.vim',
+      opt = true
+    }
   end,
   config = {
     compile_path = fn.stdpath "data" .. "/site/plugin/packer_compiled.lua",

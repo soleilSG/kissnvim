@@ -3,7 +3,7 @@
 local opt = vim.opt
 
 opt.number = true
---opt.relativenumber = true
+opt.relativenumber = true
 opt.signcolumn = "yes"
 opt.showmode = true
 opt.showmatch = true
@@ -34,5 +34,5 @@ opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 -- disable netrw, using nvim-tree exclusively
-vim.g.loaded = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

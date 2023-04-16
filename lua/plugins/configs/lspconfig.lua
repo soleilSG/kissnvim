@@ -23,7 +23,6 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 --]]
-
 -- ****** LSP config ******
 local on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -83,6 +82,14 @@ lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
+
+
+-- C
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 
 -- Python
 lspconfig.pyright.setup {}

@@ -110,3 +110,7 @@
   - Use command ":Git" to load.
 - [x] nvim-comment
   - A comment toggler for Neovim, written in Lua.
+- [x] ai-vim
+  - Generate and edit text in Neovim using OpenAI and GPT.
+  - Lazy loaded.
+  - Use command ":PacerLoad ai.vim" to load.
