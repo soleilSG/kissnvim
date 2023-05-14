@@ -121,7 +121,27 @@ lspconfig.tsserver.setup {
 -- cssls
 lspconfig.cssls.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  settings = {
+    css = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+    less = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    }
+  }
 }
 -- tailwindcss
 lspconfig.tailwindcss.setup {
