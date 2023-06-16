@@ -83,7 +83,6 @@ lspconfig.lua_ls.setup {
   capabilities = capabilities
 }
 
-
 -- C
 lspconfig.clangd.setup {
   on_attach = on_attach,
@@ -111,11 +110,14 @@ lspconfig.denols.setup {
   capabilities = capabilities
 }
 ]]
+
 -- tsserver
+--[[
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
+--]]
 
 -- CSS
 -- cssls
@@ -149,14 +151,23 @@ lspconfig.tailwindcss.setup {
   capabilities = capabilities
 }
 
--- Html
+-- html
 lspconfig.html.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
 
 -- Json
+--[[
 lspconfig.jsonls.setup {
   on_attach = on_attach,
   capabilities = capabilities
+}
+--]]
+
+-- vue
+lspconfig.volar.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 }
