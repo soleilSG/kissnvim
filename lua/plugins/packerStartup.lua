@@ -190,6 +190,14 @@ packer.startup({
       'aduros/ai.vim',
       opt = true
     }
+
+    -- maximize and resotre current window
+    use {
+      'declancm/maximize.nvim',
+      config = function()
+        require('maximize').setup()
+      end
+    }
   end,
   config = {
     compile_path = fn.stdpath "data" .. "/site/plugin/packer_compiled.lua",
