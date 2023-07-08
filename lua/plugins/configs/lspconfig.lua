@@ -169,5 +169,10 @@ lspconfig.jsonls.setup {
 lspconfig.volar.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+  init_options = {
+    typescript = {
+      tsdk = '/Users/soleil/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib',
+    }
+  }
 }
