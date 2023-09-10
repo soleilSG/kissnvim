@@ -71,7 +71,7 @@ packer.startup({
     }
 
     --nvim-jdtls java language server
-    use 'mfussenegger/nvim-jdtls'
+    -- use 'mfussenegger/nvim-jdtls'
 
     -- autotag
     use { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
@@ -118,9 +118,10 @@ packer.startup({
     }
 
     -- BufferLine, lazy loaded
+    --[[
     use {
       'akinsho/bufferline.nvim',
-      tag = "v3.*",
+      tag = "*",
       opt = true,
       cmd = { 'BufferLinePick' },
       config = function()
@@ -134,6 +135,7 @@ packer.startup({
         })
       end
     }
+    --]]
 
     -- Gitsigns, lazy loarded
     use {
@@ -146,6 +148,7 @@ packer.startup({
     }
 
     -- git plugin, lazy loaded
+    --[[
     use {
       'dinhhuy258/git.nvim',
       opt = true,
@@ -154,17 +157,19 @@ packer.startup({
         require('git').setup()
       end
     }
+    --]]
 
     -- lspsaga, lazy loaded
+    --[[
     use({
-      "glepnir/lspsaga.nvim",
-      branch = "main",
+      "nvimdev/lspsaga.nvim",
       -- opt = true,
       -- cmd = { 'Lspsaga lsp_finder' },
       config = function()
         require("lspsaga").setup({})
       end
     })
+    --]]
 
     -- Peek, markdown previewer, lazy loaded
     use({

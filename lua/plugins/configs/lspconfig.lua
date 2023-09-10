@@ -16,13 +16,11 @@ end
 
 -- Diagnostic mapping
 -- This has been replaced by LSPsaga plugin
---[[
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
---]]
 -- ****** LSP config ******
 local on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -39,6 +37,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- ****** LSPsaga config ******
 -- local opts = { noremap = true, silent = true }
+--[[
 local keymap = vim.keymap.set
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
 keymap({ "n", "v" }, "<Leader>ca", "<cmd>Lspsaga code_action<CR>")
@@ -53,6 +52,7 @@ keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
 keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+--]]
 
 
 -- ****** Languages setup ******
