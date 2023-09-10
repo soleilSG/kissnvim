@@ -9,7 +9,7 @@ map('i', 'jk', '<ESC>', opts)
 map('n', '<leader>nt', ':NvimTreeToggle<cr>', opts)
 
 -- Prettier formating buffer
-map('n', '<leader>pf', ':%!prettierd --stdin-filepath %<CR>', opts)
+map('n', '<leader>pf', ':%!prettierd "%:p"<CR>', opts)
 
 -- BufferLine key mappings
 map('n', '<leader>bp', ":BufferLinePick<cr>", opts)
