@@ -176,3 +176,6 @@ lspconfig.volar.setup {
     }
   }
 }
+
+-- graphql
+lspconfig.graphql.setup {}
