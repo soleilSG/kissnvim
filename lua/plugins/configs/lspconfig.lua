@@ -7,7 +7,7 @@ end
 -- ****** Dianostic config ******
 -- This is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
--- !important nerdfonts needs to be setup for this to work in your terminal
+-- important nerdfonts needs to be setup for this to work in your terminal
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -15,13 +15,13 @@ for type, icon in pairs(signs) do
 end
 
 -- Diagnostic mapping
--- This has been replaced by LSPsaga plugin
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
--- ****** LSP config ******
+
+-- ****** LSP format config ******
 local on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', '<space>f',
@@ -34,26 +34,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- ****** LSPsaga config ******
--- local opts = { noremap = true, silent = true }
---[[
-local keymap = vim.keymap.set
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
-keymap({ "n", "v" }, "<Leader>ca", "<cmd>Lspsaga code_action<CR>")
-keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
-keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
-keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
-keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
-keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
-keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
-keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
---]]
-
 
 -- ****** Languages setup ******
 

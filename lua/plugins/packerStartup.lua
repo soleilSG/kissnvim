@@ -1,5 +1,3 @@
--- Setup packer
-
 local fn = vim.fn
 
 -- Only required if you have packer configured as `opt`
@@ -26,11 +24,11 @@ packer.startup({
       { "lunarvim/darkplus.nvim", opt = true }
     }
 
-    -- Mason, lazy loaded
+    -- Mason
     use {
       "williamboman/mason.nvim",
-      opt = true,
-      cmd = { "Mason" },
+      -- opt = true,
+      -- cmd = { "Mason" },
       config = function()
         require("mason").setup()
       end
@@ -71,7 +69,7 @@ packer.startup({
     }
 
     --nvim-jdtls java language server
-    -- use 'mfussenegger/nvim-jdtls'
+    use 'mfussenegger/nvim-jdtls'
 
     -- autotag
     use { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
@@ -88,7 +86,8 @@ packer.startup({
     use {
       'nvim-treesitter/nvim-treesitter',
       run = function()
-        require('nvim-treesitter.install').update({ with_sync = true })
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
       end,
       config = function()
         require 'plugins.configs.treesitter'
@@ -117,26 +116,6 @@ packer.startup({
       end
     }
 
-    -- BufferLine, lazy loaded
-    --[[
-    use {
-      'akinsho/bufferline.nvim',
-      tag = "*",
-      opt = true,
-      cmd = { 'BufferLinePick' },
-      config = function()
-        require("bufferline").setup({
-          options = {
-            mode = 'buffers',
-            offsets = {
-              { filetype = 'NvimTree' }
-            },
-          }
-        })
-      end
-    }
-    --]]
-
     -- Gitsigns, lazy loarded
     use {
       'lewis6991/gitsigns.nvim',
@@ -146,41 +125,6 @@ packer.startup({
         require('gitsigns').setup()
       end
     }
-
-    -- git plugin, lazy loaded
-    --[[
-    use {
-      'dinhhuy258/git.nvim',
-      opt = true,
-      cmd = { 'Git' },
-      config = function()
-        require('git').setup()
-      end
-    }
-    --]]
-
-    -- lspsaga, lazy loaded
-    --[[
-    use({
-      "nvimdev/lspsaga.nvim",
-      -- opt = true,
-      -- cmd = { 'Lspsaga lsp_finder' },
-      config = function()
-        require("lspsaga").setup({})
-      end
-    })
-    --]]
-
-    -- Peek, markdown previewer, lazy loaded
-    use({
-      'toppair/peek.nvim',
-      run = 'deno task --quiet build:fast',
-      opt = true,
-      cmd = { 'PeekOpen' },
-      config = function()
-        require 'plugins.configs.peek'
-      end
-    })
 
     -- comment
     use {
@@ -194,14 +138,6 @@ packer.startup({
     use {
       'aduros/ai.vim',
       opt = true
-    }
-
-    -- maximize and resotre current window
-    use {
-      'declancm/maximize.nvim',
-      config = function()
-        require('maximize').setup()
-      end
     }
   end,
   config = {
