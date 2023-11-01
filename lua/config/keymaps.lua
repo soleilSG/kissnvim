@@ -1,4 +1,3 @@
 local map = vim.keymap.set
-local opts = {noremap = true, silent = true }
 
-map('i', 'jk', '<ESC>',{desc = 'Escape to normal mode'})
+map("i", "jk", "<ESC>", { desc = "Escape to normal mode", noremap = true, silent = true })
