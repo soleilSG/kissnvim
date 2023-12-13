@@ -27,14 +27,15 @@ return {
 				auto_install = true,
 				highlight = {
 					enable = true,
+					disable = { "vimdoc" },
 					-- Disable slow treesitter highlight for large files
-					disable = function(_, buf)
-						local max_filesize = 1024 * 1024 -- 1 MB
-						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-						if ok and stats and stats.size > max_filesize then
-							return true
-						end
-					end,
+					-- disable = function(_, buf)
+					-- 	local max_filesize = 1024 * 1024 * 10 -- 1 MB
+					-- 	local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+					-- 	if ok and stats and stats.size > max_filesize then
+					-- 		return true
+					-- 	end
+					-- end,
 					additional_vim_regex_highlighting = false,
 				},
 				indent = {
@@ -44,7 +45,7 @@ return {
 					enable = true,
 				},
 				modules = {},
-				ignore_install = {},
+				ignore_install = { "vimdoc" },
 			})
 
 			-- Treesitter folding
@@ -135,6 +136,12 @@ return {
 
 			-- Go
 			lspconfig.gopls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
+			-- Rust
+			lspconfig.rust_analyzer.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})
