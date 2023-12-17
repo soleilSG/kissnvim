@@ -27,3 +27,6 @@ opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.tabstop = 2
 opt.expandtab = true
+
+-- enable copy, paste to system clipboard by default
+-- opt.clipboard = "unnamedplus"
