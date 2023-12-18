@@ -49,6 +49,11 @@ return {
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		opts.capabilities = capabilities
 
-		require("jdtls").start_or_attach(opts)
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "java",
+			callback = function()
+				require("jdtls").start_or_attach(opts)
+			end,
+		})
 	end,
 }
