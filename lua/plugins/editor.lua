@@ -50,4 +50,15 @@ return {
 		},
 		opts = {},
 	},
+
+	-- Git
+	{
+		"lewis6991/gitsigns.nvim",
+		keys = {
+			{ "<leader>xg", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle git signs" },
+		},
+		opts = {
+			signcolumn = false,
+		},
+	},
 }
