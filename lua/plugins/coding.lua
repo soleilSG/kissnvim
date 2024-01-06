@@ -199,6 +199,9 @@ return {
 
 			-- graphql
 			lspconfig.graphql.setup({})
+
+			-- xml
+			lspconfig.lemminx.setup({})
 		end,
 	},
 
