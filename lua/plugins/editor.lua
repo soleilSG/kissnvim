@@ -1,64 +1,81 @@
 return {
 	-- ColorSchemes
 	{ "ellisonleao/gruvbox.nvim" },
+  { "folke/tokyonight.nvim" },
 
-	-- File Explorer
-	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		keys = {
-			{ "<leader>ft", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Toggle" },
-		},
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		opts = {},
-	},
+  -- Icons
+  {"nvim-tree/nvim-web-devicons"},
 
-	-- Dianostics
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		keys = {
-			{ "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Trouble Toggle" },
-			{
-				"<leader>xw",
-				"<cmd>TroubleToggle workspace_diagnostics<cr>",
-				desc = "Trouble Toggle Workspace Dianostics",
-			},
-			{
-				"<leader>xb",
-				"<cmd>TroubleToggle document_diagnostics<cr>",
-				desc = "Trouble Toggle Buffer Dianostics",
-			},
-			{ "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble Toggle Quickfix" },
-			{ "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Trouble Toggle Loclist" },
-			{ "gR", "<cmd>TroubleToggle lsp_references<cr>", desc = "Trouble Toggle Lsp References" },
-		},
-		opts = {},
-	},
+  -- File Explorer
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      { "<leader>tf", "<cmd>Neotree toggle<cr>", desc = "NeoTree File Explorer" },
+      { "<leader>tb", "<cmd>Neotree buffers toggle<cr>", desc = "NeoTree Buffers" },
+    },
+    opts = {},
+  },
 
-	-- Todo Comment
-	{
-		"folke/todo-comments.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"folke/trouble.nvim",
-		},
-		keys = {
-			{ "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-		},
-		opts = {},
-	},
+  -- Keymaps
+  --[[
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+      },
+      desc = "Buffer Local Keymaps (which-key)",
+    },
+  },
+  --]]
 
-	-- Git
-	{
-		"lewis6991/gitsigns.nvim",
-		keys = {
-			{ "<leader>xg", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle git signs" },
-		},
-		opts = {
-			signcolumn = false,
-		},
-	},
+  -- Finder
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    keys = {
+      { "<leader>fd", "<cmd>Telescope<cr>", desc="Telescope"},
+    },
+  },
+
+  -- Buffer Line
+  --[[
+  {
+    "willothy/nvim-cokeline",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      sidebar = {
+        filetype = { "NvimTree", "neo-tree" },
+        components = {
+          {
+            text = function(buf)
+              return buf.filetype
+            end,
+            fg = yellow,
+            bg = function()
+              local get_hex = require('cokeline.hlgroups').get_hl_attr
+              return get_hex('neo-tree', 'bg')
+            end,
+            bold = true,
+          },
+        },
+      },
+    },
+  },
+  --]]
 }
