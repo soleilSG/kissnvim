@@ -15,17 +15,13 @@ Currently I am using lazy.nvim as plugins manager.
 - tokyonoght.nvim
 ##### File Explorer
 - neo-tree.nvim
-~~##### Keymaps~~
-~~- which-key.nvim~~
 ##### Fuzzy search
 - telescope.nvim
-~~##### Buffer line~~
-~~- nvim-cokeline~~
 
 #### Coding plugins
-##### LSP
+##### Package Manager
 - Mason.nvim
 ##### Auto-completion
 - nvim-cmp
-~~##### TreeSitter~~
-##### Git
+##### Formater
+- conform.nvim
