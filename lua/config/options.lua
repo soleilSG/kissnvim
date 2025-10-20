@@ -1,7 +1,3 @@
--- Disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -29,4 +25,4 @@ opt.tabstop = 2
 opt.expandtab = true
 
 -- enable copy, paste to system clipboard by default
--- opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
