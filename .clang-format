@@ -1,0 +1,78 @@
+# Google C++ Style Guide
+# https://google.github.io/styleguide/cppguide.html
+
+BasedOnStyle: Google
+
+# Indentation
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+ContinuationIndentWidth: 4
+
+# Line length
+ColumnLimit: 80
+
+# Braces
+BreakBeforeBraces: Attach
+
+# Pointers and references alignment
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+# Namespaces
+NamespaceIndentation: None
+
+# Access modifiers (public, private, protected)
+AccessModifierOffset: -1
+
+# Include sorting
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  # C system headers
+  - Regex:           '^<.*\.h>'
+    Priority:        1
+  # C++ standard library headers
+  - Regex:           '^<.*>'
+    Priority:        2
+  # Other library headers
+  - Regex:           '^".*"'
+    Priority:        3
+
+# Function arguments
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackArguments: true
+BinPackParameters: true
+
+# Short functions/statements on single line
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
+
+# Comments
+ReflowComments: true
+
+# Align consecutive assignments/declarations
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+
+# Spaces
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+# Pack constructor initializers
+PackConstructorInitializers: NextLine
+ConstructorInitializerIndentWidth: 4
+
+# Language standard
+Standard: c++17

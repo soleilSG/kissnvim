@@ -1,5 +1,7 @@
 return {
   'saghen/blink.cmp',
+  --enabled = false,
+
   lazy = false,
 
   -- use a release tag to download pre-built binaries
@@ -10,7 +12,7 @@ return {
     -- 'enter' for enter to accept
     -- 'none' for no mappings
     --
-    -- All presets have the following mappings:
+    -- all presets have the following mappings:
     -- C-space: Open menu or open docs if already open
     -- C-n/C-p or Up/Down: Select next/previous item
     -- C-e: Hide menu
