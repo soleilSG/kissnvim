@@ -1,4 +1,8 @@
 return {
+	--Color Schemes
+	{ "ellisonleao/gruvbox.nvim" },
+	{ "vague-theme/vague.nvim" },
+
 	-- File Explorer
 	{
 		"nvim-neo-tree/neo-tree.nvim",

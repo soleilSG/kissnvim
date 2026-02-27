@@ -1,4 +1,27 @@
 return {
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = "BufRead",
+		build = ":TSUpdate",
+		opts = function()
+			-- Treesitter folding
+			vim.opt.foldmethod = "expr"
+			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+			return {
+				ensure_installed = { "c", "cpp", "lua", "python" },
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = {
+					enable = true,
+				},
+			}
+		end,
+	},
+
+	-- Blink.cmp completion
 	{
 		"saghen/blink.cmp",
 		-- optional: provides snippets for the snippet source
@@ -51,5 +74,38 @@ return {
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
+	},
+
+	-- conform.nvim to do formatting
+	{
+		"stevearc/conform.nvim",
+		keys = {
+			{
+				"<leader>fm",
+				function()
+					require("conform").format({ async = true })
+				end,
+				mode = "",
+				desc = "Format buffer",
+			},
+		},
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+			},
+		},
+	},
+
+	-- Lazydev.nvim for neovim development
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 }
