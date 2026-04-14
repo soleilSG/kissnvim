@@ -1,12 +1,13 @@
 return {
 	cmd = {
-		"clangd",
+		"/opt/homebrew/opt/llvm/bin/clangd",
 		"--background-index",
 		"--clang-tidy",
 		"--header-insertion=iwyu",
 		"--completion-style=detailed",
 		"--function-arg-placeholders",
 		"--fallback-style=google",
+		-- "--query-driver=/opt/homebrew/opt/llvm/bin/clang++",
 	},
 	filetypes = { "c", "cpp" },
 	root_markers = {

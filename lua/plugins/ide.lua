@@ -92,6 +92,31 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
+				c = { "clang_format" },
+				cpp = { "clang_format" },
+				-- Google style, generate .clang-format at project root
+				-- clang-format --style=Google --dump-config > .clang-format
+				json = { "jq" },
+			},
+			default_format_opts = {
+				lsp_format = "fallback",
+			},
+		},
+	},
+
+	-- mini.surround for auto pairing
+	{
+		"nvim-mini/mini.surround",
+		version = "*",
+		opts = {
+			mappings = {
+				add = "ys", -- vim-surround style
+				delete = "ds",
+				replace = "cs",
+				find = "",
+				find_left = "",
+				highlight = "",
+				update_n_lines = "",
 			},
 		},
 	},
