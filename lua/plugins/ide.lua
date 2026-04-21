@@ -9,7 +9,7 @@ return {
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 			return {
-				ensure_installed = { "c", "cpp", "lua", "python" },
+				ensure_installed = { "c", "lua" },
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
