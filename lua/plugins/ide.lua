@@ -1,4 +1,10 @@
 return {
+  -- Mason
+  {
+    "mason-org/mason.nvim",
+    opts = {},
+  },
+
 	-- Blink.cmp completion
 	{
 		"saghen/blink.cmp",

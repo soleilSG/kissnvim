@@ -1,7 +1,7 @@
 return {
   cmd = { "vtsls", "--stdio" },
   filetypes = {
-    "javascript",
+    "javascript", "typescript",
   },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
   settings = {
