@@ -16,11 +16,4 @@ return {
 			{ "<leader>ft", "<cmd>Neotree<cr>", desc = "Neotree" },
 		},
 	},
-
-	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-	   lazy = false,
-		 build = ":TSUpdate",
-	},
 }

@@ -1,6 +1,8 @@
 vim.lsp.enable({
 	-- "lua_ls",
 	-- "clangd",
-	"jdtls",
+	-- "jdtls",
 	-- "vtsls",
+	-- "basedpyright",
+	-- "ruff",
 })
