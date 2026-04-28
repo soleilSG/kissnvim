@@ -5,4 +5,5 @@ vim.lsp.enable({
 	-- "vtsls",
 	-- "basedpyright",
 	-- "ruff",
+	-- "taplo",
 })
