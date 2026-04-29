@@ -1,10 +1,10 @@
 return {
-  -- Mason
-  {
-    "mason-org/mason.nvim",
-    opts = {},
-    lazy = false,
-  },
+	-- Mason
+	{
+		"mason-org/mason.nvim",
+		opts = {},
+		lazy = false,
+	},
 
 	-- Blink.cmp completion
 	{
@@ -82,8 +82,9 @@ return {
 				-- Google style, generate .clang-format at project root
 				-- clang-format --style=Google --dump-config > .clang-format
 				json = { "jq" },
-        javascript = {"prettierd"},
-        typescript = {"prettierd"},
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				go = { "goimports", "gofumpt" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
@@ -105,6 +106,16 @@ return {
 				highlight = "",
 				update_n_lines = "",
 			},
+		},
+	},
+
+	-- toggled terminal
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = true,
+		keys = {
+			{ "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
 		},
 	},
 }
