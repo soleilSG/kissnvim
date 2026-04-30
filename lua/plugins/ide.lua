@@ -85,6 +85,7 @@ return {
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },
 				go = { "goimports", "gofumpt" },
+				toml = { "taplo" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",

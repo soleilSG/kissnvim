@@ -6,4 +6,5 @@ vim.lsp.enable({
 	-- "basedpyright",
 	-- "ruff",
 	-- "gopls",
+	-- "taplo",
 })
