@@ -86,6 +86,7 @@ return {
 				typescript = { "prettierd" },
 				go = { "goimports", "gofumpt" },
 				toml = { "taplo" },
+				yaml = { "yamlfmt" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
