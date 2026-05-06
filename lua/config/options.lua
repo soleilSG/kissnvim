@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.g.markdown_folding = 1
+
 local opt = vim.opt
 
 opt.number = true
