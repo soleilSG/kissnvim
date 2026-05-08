@@ -110,14 +110,4 @@ return {
 			},
 		},
 	},
-
-	-- toggled terminal
-	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-		config = true,
-		keys = {
-			{ "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
-		},
-	},
 }
