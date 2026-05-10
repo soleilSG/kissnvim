@@ -7,4 +7,5 @@ vim.lsp.enable({
 	-- "ruff",
 	-- "gopls",
 	-- "taplo",
+	-- "bashls",
 })

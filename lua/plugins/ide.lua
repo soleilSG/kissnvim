@@ -87,26 +87,11 @@ return {
 				go = { "goimports", "gofumpt" },
 				toml = { "taplo" },
 				yaml = { "yamlfmt" },
+				sh = { "shfmt" },
+				bash = { "shfmt" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
-			},
-		},
-	},
-
-	-- mini.surround for auto pairing
-	{
-		"nvim-mini/mini.surround",
-		version = "*",
-		opts = {
-			mappings = {
-				add = "ys", -- vim-surround style
-				delete = "ds",
-				replace = "cs",
-				find = "",
-				find_left = "",
-				highlight = "",
-				update_n_lines = "",
 			},
 		},
 	},
