@@ -1,6 +1,7 @@
 return {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
+	workspace_required = true,
 	root_markers = {
 		".luarc.json",
 		".luarc.jsonc",
@@ -10,5 +11,15 @@ return {
 		"selene.toml",
 		"selene.yml",
 		".git",
+	},
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+			},
+			workspace = {
+				library = { vim.env.VIMRUNTIME },
+			},
+		},
 	},
 }
