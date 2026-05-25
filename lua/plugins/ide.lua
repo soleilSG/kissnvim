@@ -88,6 +88,12 @@ return {
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 			},
+			formatters = {
+				prettierd = {
+					-- Append the no-semi argument to the default command execution
+					prepend_args = { "--semi" },
+				},
+			},
 			default_format_opts = {
 				lsp_format = "fallback",
 			},
