@@ -82,6 +82,7 @@ return {
 				json = { "jq" },
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },
+				python = { "ruff_organize_imports", "ruff_format" },
 				go = { "goimports", "gofumpt" },
 				toml = { "taplo" },
 				yaml = { "yamlfmt" },
