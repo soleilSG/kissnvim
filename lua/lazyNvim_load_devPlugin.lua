@@ -4,7 +4,7 @@ return {
 		name = "hello-plugin",
 		dev = true, -- marks it as a dev plugin
 		config = function()
-			require("hello-plugin").setup({})
+			require("hello-plugin").setup()
 		end,
 	},
 }
