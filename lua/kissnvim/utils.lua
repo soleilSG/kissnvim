@@ -1,5 +1,9 @@
 local M = {}
 
+function M.hello()
+	vim.notify("Hello kissnvim! 🎉", vim.log.levels.INFO)
+end
+
 ---Return the line range of the current visual selection and the current file name.
 ---
 ---When called from Visual mode, this uses the active visual selection. Otherwise it
