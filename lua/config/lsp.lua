@@ -1,5 +1,5 @@
 vim.lsp.enable({
-	-- "lua_ls",
+	"lua_ls",
 	-- "clangd",
 	-- "jdtls",
 	-- "vtsls",
