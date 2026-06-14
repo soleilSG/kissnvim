@@ -1,11 +1,6 @@
+-- local developing plugin
 return {
 	dir = "~/atelier/Nvim/kissnvim-plugin",
-	name = "kissnvim",
 	lazy = false,
-	dev = true,
-	--[[
-	config = function()
-		require("kissnvim").setup()
-	end,
-  --]]
+	config = true,
 }
