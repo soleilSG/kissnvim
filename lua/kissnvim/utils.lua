@@ -1,36 +1,26 @@
 local M = {}
 
-function M.hello()
-	vim.notify("Hello kissnvim! 🎉", vim.log.levels.INFO)
-end
+function M.ConciseTabLine()
+	local s = ""
+	for i = 1, vim.fn.tabpagenr("$") do
+		-- Highlight current tab differently
+		if i == vim.fn.tabpagenr() then
+			s = s .. "%#TabLineSel#"
+		else
+			s = s .. "%#TabLine#"
+		end
+		-- Get buffer name for the active window in each tabpage
+		local buflist = vim.fn.tabpagebuflist(i)
+		local winnr = vim.fn.tabpagewinnr(i)
+		local bufname = vim.fn.bufname(buflist[winnr])
+		local filename = vim.fn.fnamemodify(bufname, ":t") -- ':t' isolates the file name
 
----Return the line range of the current visual selection and the current file name.
----
----When called from Visual mode, this uses the active visual selection. Otherwise it
----falls back to the last visual selection marks (`'<` and `'>`).
----@return table selection_info { start_line: integer, end_line: integer, filename: string }
-function M.get_selection_line_range()
-	local mode = vim.fn.mode()
-	local start_line
-	local end_line
-
-	if mode == "v" or mode == "V" or mode == "\22" then
-		start_line = vim.fn.getpos("v")[2]
-		end_line = vim.fn.getpos(".")[2]
-	else
-		start_line = vim.fn.getpos("'<")[2]
-		end_line = vim.fn.getpos("'>")[2]
+		if filename == "" then
+			filename = "[No Name]"
+		end
+		s = s .. " " .. i .. ": " .. filename .. " "
 	end
-
-	if start_line > end_line then
-		start_line, end_line = end_line, start_line
-	end
-
-	return {
-		start_line = start_line,
-		end_line = end_line,
-		filename = vim.fn.expand("%:t"),
-	}
+	return s
 end
 
 return M
