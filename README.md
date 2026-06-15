@@ -1,11 +1,13 @@
 My Neovim plugin which follows the minimalist principal.
 
 ## Features
-- Shorten tabpage lable on tabline.
+- Shorten tabpage lable on tabline. (this feature has been moved to nvim configuration)
+- LSPList command lists all configured LSP servers and indicates which ones are enabled.
+- LSPEnable command enables a configured LSP server which isn't enabled.
 
 ## Development
 ### Development workflow
-1. Write functions for realizing a feature in 'lua/kissnvim/scratch.lua' file.
+1. Write functions for realizing a feature in a .lua file.
 2. Unit test on current Neovim session
 ```vim
 " Load code into Neovim's Lua runtime
