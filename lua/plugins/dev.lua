@@ -1,6 +1,9 @@
 -- local developing plugin
 return {
-	dir = "~/atelier/Nvim/kissnvim-plugin",
-	lazy = false,
+	"soleilSG/kissnvim",
+	branch = "plugin",
+	-- enabled = false,
+	-- lazy = false,
 	config = true,
+	dev = true,
 }
