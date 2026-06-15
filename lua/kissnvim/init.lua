@@ -6,8 +6,10 @@ function M.setup(opts)
 
 	M.utils = utils
 
+	--[[ This feature has been moved to kissnvim config
 	_G.ConciseTabLine = utils.ConciseTabLine
 	vim.o.tabline = "%!v:lua.ConciseTabLine()"
+  --]]
 end
 
 return M
