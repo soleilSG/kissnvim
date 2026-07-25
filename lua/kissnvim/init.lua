@@ -52,9 +52,12 @@ function M.setup(opts)
 	end, {})
 
 	vim.api.nvim_create_user_command("LSPEnable", function(cmd)
-		M.enable_lsp(cmd.args)
+		-- M.enable_lsp(cmd.args)
+		-- print(vim.inspect(cmd.fargs))
+		vim.lsp.enable(cmd.fargs)
 	end, {
-		nargs = 1,
+		nargs = "+",
+		desc = "Enable lsp server(s)",
 	})
 end
 
