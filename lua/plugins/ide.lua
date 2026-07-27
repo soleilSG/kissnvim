@@ -9,8 +9,8 @@ local formatters_by_ft = {
 	css = { "prettierd" },
 	javascript = { "prettierd" },
 	typescript = { "prettierd" },
-	javascriptreact = { "prettier" },
-	typescriptreact = { "prettier" },
+	javascriptreact = { "prettierd" },
+	typescriptreact = { "prettierd" },
 	python = { "ruff_organize_imports", "ruff_format" },
 	go = { "goimports", "gofumpt" },
 	toml = { "taplo" },
@@ -20,26 +20,6 @@ local formatters_by_ft = {
 }
 
 return {
-	-- Mason
-	{
-		"mason-org/mason.nvim",
-		opts = {},
-		--[[
-		opts = {
-			pip = {
-				-- Force mason to use uv instead of pip
-				use_uv = true,
-			},
-			python = {
-				-- Set uv as the venv manager and installer backend
-				venv = "uv", -- Options: "uv", "venv", or "virtualenv"
-				installer = "uv", -- Options: "uv" or "pip"
-			},
-		},
-    --]]
-		lazy = false,
-	},
-
 	-- Blink.cmp completion
 	{
 		"saghen/blink.cmp",
@@ -107,25 +87,6 @@ return {
 			},
 		},
 		opts = {
-			--[[
-			formatters_by_ft = {
-				lua = { "stylua" },
-				c = { "clang_format" },
-				cpp = { "clang_format" },
-				-- Google style, generate .clang-format at project root
-				-- clang-format --style=Google --dump-config > .clang-format
-				json = { "jq" },
-				html = { "prettierd" },
-				javascript = { "prettierd" },
-				typescript = { "prettierd" },
-				python = { "ruff_organize_imports", "ruff_format" },
-				go = { "goimports", "gofumpt" },
-				toml = { "taplo" },
-				yaml = { "yamlfmt" },
-				sh = { "shfmt" },
-				bash = { "shfmt" },
-			},
-      --]]
 			formatters_by_ft = formatters_by_ft,
 			formatters = {
 				prettierd = {
