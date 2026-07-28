@@ -3,7 +3,8 @@ return {
 	"soleilSG/kissnvim",
 	branch = "plugin",
 	-- enabled = false,
-	-- lazy = false,
-	config = true,
+	config = function()
+		require("kissnvim_plugin").setup()
+	end,
 	dev = true,
 }
