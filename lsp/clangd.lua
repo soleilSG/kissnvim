@@ -1,6 +1,6 @@
 return {
 	cmd = {
-		"/opt/homebrew/opt/llvm/bin/clangd",
+		"clangd",
 		"--background-index",
 		"--clang-tidy",
 		"--header-insertion=iwyu",
@@ -16,9 +16,9 @@ return {
 		".clang-format",
 		"compile_commands.json",
 		"compile_flags.txt",
-		"configure.ac",
 		".git",
 	},
+	single_file_support = true,
 	capabilities = {
 		offsetEncoding = { "utf-16" },
 	},
