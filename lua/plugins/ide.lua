@@ -17,6 +17,7 @@ local formatters_by_ft = {
 	yaml = { "yamlfmt" },
 	sh = { "shfmt" },
 	bash = { "shfmt" },
+  xml = { "xmlstarlet" },
 }
 
 return {
