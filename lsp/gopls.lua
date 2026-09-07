@@ -1,3 +1,8 @@
+-- Pressing <leader>ci will quickly clean and organize imports manually
+-- vim.keymap.set("n", "<leader>ci", function()
+-- 	vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+-- end, { desc = "Clean & Organize Go Imports" })
+
 return {
 	cmd = { "gopls" },
 	filetypes = { "go" },
