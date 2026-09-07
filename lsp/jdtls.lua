@@ -43,6 +43,7 @@ return {
 		"-data",
 		workspace_dir,
 	},
+	filetypes = { "java" },
 	root_dir = root_dir,
 	init_options = {
 		extendedClientCapabilities = {
