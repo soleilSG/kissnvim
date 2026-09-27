@@ -12,12 +12,13 @@ local formatters_by_ft = {
 	javascriptreact = { "prettierd" },
 	typescriptreact = { "prettierd" },
 	python = { "ruff_organize_imports", "ruff_format" },
-	go = { "goimports", "gofumpt" },
+	go = { "goimports", "gofmt" },
+	rust = { "rustfmt" },
 	toml = { "taplo" },
 	yaml = { "yamlfmt" },
 	sh = { "shfmt" },
 	bash = { "shfmt" },
-  xml = { "xmlstarlet" },
+	xml = { "xmlstarlet" },
 }
 
 return {
