@@ -39,6 +39,6 @@ require("lazy").setup({
 	rocks = { enabled = false },
 	dev = {
 		path = "~/atelier/Nvim",
-		fallback = false,
+		fallback = true,
 	},
 })
